@@ -4,7 +4,7 @@ import TitleScreen = require("./TitleScreen");
 
 class GameCore {
 
-	center: {x: number, y: number};
+	center: {x: number; y: number};
 
 	font: g.Font;
 

@@ -1,6 +1,6 @@
-enum Turn {
-    Question,
-    Answer
+enum turn {
+	question,
+	answer
 }
 
-export = Turn;
+export = turn;

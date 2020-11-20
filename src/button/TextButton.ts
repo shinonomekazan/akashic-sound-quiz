@@ -2,13 +2,21 @@ import Button = require("./Button");
 import TextButtonParams = require("./param/TextButtonParams");
 
 class TextButton extends Button {
-	
-    static font: g.Font;
 
-    background: g.E;
-    text: g.Label;
+	static font: g.Font;
 
-    constructor(params: TextButtonParams) {
+	background: g.E;
+	text: g.Label;
+
+	static getFont(game: g.Game): g.Font {
+		return (this.font || (this.font = new g.DynamicFont({
+			game: game,
+			fontFamily: "monospace",
+			size: 40,
+		})));
+	}
+
+	constructor(params: TextButtonParams) {
 		params.color = params.color || "white";
 		params.textColor = params.textColor || "black";
 		params.font = params.font || TextButton.getFont(params.scene.game);
@@ -31,12 +39,12 @@ class TextButton extends Button {
 			touchable: params.touchable,
 			local: params.local,
 			parent: this
-		}))
+		}));
 	}
 
 	createText(params: TextButtonParams): g.Label {
 		return (new g.Label({
-            scene: params.scene,
+			scene: params.scene,
 			width: params.width,
 			height: params.height,
 			maxWidth: params.width,
@@ -46,24 +54,16 @@ class TextButton extends Button {
 			textColor: params.textColor,
 			textAlign: g.TextAlign.Center,
 			x: (params.width - params.text.length * params.fontSize * .55) / 2,
-            y: (params.height - params.fontSize * 1.5) / 2,
+			y: (params.height - params.fontSize * 1.5) / 2,
 			local: params.local,
 			parent: this
-        }))
+		}));
 	}
 
 	getTextWidth(): number {
 		return this.text.text.length * this.text.fontSize * .55;
 	}
 
-	static getFont(game: g.Game): g.Font {
-		return (this.font || (this.font = new g.DynamicFont({
-			game: game,
-			fontFamily: "monospace",
-			size: 40,
-		})))
-    }
-    
 }
 
 export = TextButton;

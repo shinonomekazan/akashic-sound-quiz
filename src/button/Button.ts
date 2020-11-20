@@ -5,13 +5,13 @@ abstract class Button extends g.E {
 	button: g.E;
 
 	onClick: g.Trigger<g.PointEvent>;
-	
+
 	isCercle: boolean;
 
 	params: ButtonParams;
 
-    constructor(params: ButtonParams) {
-        params.width = params.width || 120;
+	constructor(params: ButtonParams) {
+		params.width = params.width || 120;
 		params.height = params.height || 40;
 		params.anchorX = params.anchorX || .5;
 		params.anchorY = params.anchorY || .5;
@@ -21,9 +21,9 @@ abstract class Button extends g.E {
 		super(params);
 
 		this.params = params;
-		
+
 		params.scaleOnPressed = params.scaleOnPressed || .9;
-		
+
 		this.onClick = new g.Trigger();
 
 		this.isCercle = params.isCercle;
@@ -48,14 +48,13 @@ abstract class Button extends g.E {
 			let _outside = this.isOutsideButton(ev);
 			if (outside && !_outside) {
 				this.onPressed(ev, true);
-			}
-			else if (!outside && _outside) {
+			} else if (!outside && _outside) {
 				this.onPressed(ev, false);
 			}
 			outside = _outside;
 		});
-        
-        this.getButton().pointUp.add((ev) => {
+
+		this.getButton().pointUp.add((ev) => {
 			if (!pointDown) return;
 			pointDown = false;
 			outside = true;
@@ -66,23 +65,22 @@ abstract class Button extends g.E {
 			}
 
 			this.onClick.fire(ev);
-        });
+		});
 	}
 
 	abstract createButton(params: ButtonParams): g.E;
-	
+
 	getButton(): g.E {
 		return this.button;
 	}
 
 	onPressed(ev: g.PointEvent, pressed: boolean): void {
 		if (ev.player.id !== g.game.selfId) return;
-		
+
 		if (pressed) {
 			this.scale(this.params.scaleOnPressed);
 			this.modified();
-		}
-		else {
+		} else {
 			this.scale(1);
 			this.modified();
 		}
