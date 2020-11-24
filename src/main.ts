@@ -3,7 +3,7 @@ import GameCore = require("./GameCore");
 function main(param: g.GameMainParameterObject): void {
 	const scene = new g.Scene({
 		game: g.game,
-		assetIds: ["se", "sound2", "button_answer"]
+		assetIds: ["se", "do", "re", "mi", "fa", "so", "ra", "si", "button_answer"]
 	});
 
 	scene.loaded.add(() => {

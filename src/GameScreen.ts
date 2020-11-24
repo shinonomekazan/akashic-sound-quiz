@@ -409,6 +409,34 @@ class GameScreen extends g.E {
 		return this.question === this.answer;
 	}
 
+	getSoundId(text: string): string {
+		let soundId = "";
+		switch (text) {
+			case "C":
+				soundId = "do";
+				break;
+			case "D":
+				soundId = "re";
+				break;
+			case "E":
+				soundId = "mi";
+				break;
+			case "F":
+				soundId = "fa";
+				break;
+			case "G":
+				soundId = "so";
+				break;
+			case "A":
+				soundId = "ra";
+				break;
+			case "B":
+				soundId = "si";
+				break;
+		}
+		return soundId;
+	}
+
 	emitAnswer(text: string): void {
 		g.game.raiseEvent(new g.MessageEvent({ message: "Answer", text: text }));
 	}
@@ -426,7 +454,10 @@ class GameScreen extends g.E {
 			this.questionLabel.text += this.gameCore.myPlayer.isMaster() ? text : "*";
 			this.questionLabel.invalidate();
 
-			(this.scene.assets.sound2 as g.AudioAsset).play();
+			let soundId = this.getSoundId(text);
+			if (soundId !== "")
+				(this.scene.assets[soundId] as g.AudioAsset).play();
+
 		} else if (this.currentTurn === turn.answer && ev.player.id !== Player.masterId) {
 			if (ev.player.id !== g.game.selfId) return;
 
@@ -434,7 +465,9 @@ class GameScreen extends g.E {
 			this.answerLabel.text += text;
 			this.answerLabel.invalidate();
 
-			(this.scene.assets.sound2 as g.AudioAsset).play();
+			let soundId = this.getSoundId(text);
+			if (soundId !== "")
+				(this.scene.assets[soundId] as g.AudioAsset).play();
 
 			if (this.checkLose()) {
 				this.onLose();

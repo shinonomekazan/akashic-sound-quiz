@@ -10,11 +10,47 @@
 			"systemId": "sound",
 			"duration": 250
 		},
-		"sound2": {
+		"do": {
 			"type": "audio",
-			"path": "audio/sound2",
+			"path": "audio/se_maoudamashii_instruments_piano2_1do",
 			"systemId": "sound",
-			"duration": 250
+			"duration": 3000
+		},
+		"re": {
+			"type": "audio",
+			"path": "audio/se_maoudamashii_instruments_piano2_2re",
+			"systemId": "sound",
+			"duration": 3000
+		},
+		"mi": {
+			"type": "audio",
+			"path": "audio/se_maoudamashii_instruments_piano2_3mi",
+			"systemId": "sound",
+			"duration": 3000
+		},
+		"fa": {
+			"type": "audio",
+			"path": "audio/se_maoudamashii_instruments_piano2_4fa",
+			"systemId": "sound",
+			"duration": 3000
+		},
+		"so": {
+			"type": "audio",
+			"path": "audio/se_maoudamashii_instruments_piano2_5so",
+			"systemId": "sound",
+			"duration": 3000
+		},
+		"ra": {
+			"type": "audio",
+			"path": "audio/se_maoudamashii_instruments_piano2_6ra",
+			"systemId": "sound",
+			"duration": 3000
+		},
+		"si": {
+			"type": "audio",
+			"path": "audio/se_maoudamashii_instruments_piano2_7si",
+			"systemId": "sound",
+			"duration": 3000
 		},
 		"button_answer": {
 			"type": "image",
