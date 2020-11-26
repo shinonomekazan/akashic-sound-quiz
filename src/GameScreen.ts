@@ -61,12 +61,12 @@ class GameScreen extends g.E {
 
 			if (ev.data.message === "Failed") {
 				if (ev.player.id !== g.game.selfId && g.game.age - ev.data.age < g.game.fps * 3)
-				    this.showPopup("Player" + ev.player.id + " Failed !");
+				    this.showPopup((ev.player.name != null ? ev.player.name : "Player " + ev.player.id) + " Failed !");
 			}
 
 			if (ev.data.message === "Clear") {
 				if (ev.player.id !== g.game.selfId && g.game.age - ev.data.age < g.game.fps * 3)
-				    this.showPopup("Player" + ev.player.id + " Clear !");
+				    this.showPopup((ev.player.name != null ? ev.player.name : "Player " + ev.player.id) + " Clear !");
 			}
 
 			if (ev.data.message === "ClosePopup") {
